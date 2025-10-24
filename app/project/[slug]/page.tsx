@@ -9,7 +9,7 @@ type ProjectDetailPageProps = {
   };
 };
 
-const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
+const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
   const { slug } = params;
 
   const project = projectList.find((p) => p.id.toString() === slug);
