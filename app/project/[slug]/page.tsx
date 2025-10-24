@@ -1,7 +1,6 @@
 import { projectList } from "@/app/database/Project";
 import { notFound } from "next/navigation";
 import ProjectContent from "@/app/components/ProjectContent";
-import DoDebug from "@/app/components/DoDebug";
 
 
 type ProjectDetailPageProps = {
