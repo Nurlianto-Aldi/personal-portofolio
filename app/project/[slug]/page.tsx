@@ -2,26 +2,29 @@ import { projectList } from "@/app/database/Project";
 import { notFound } from "next/navigation";
 import ProjectContent from "@/app/components/ProjectContent";
 
-// 1. Tipe untuk params (dibuat seminimal mungkin)
-type ProjectParams = {
+// Tipe untuk props halaman, termasuk params
+type ProjectDetailPageProps = {
+  params: {
   slug: string;
+  }
 };
 
-// 2. GANTI MENJADI FUNGSI ASYNC dan hapus const/arrow function
-// Nama fungsi harus diekspor default.
-export default async function ProjectDetailPage({ params }: { params: ProjectParams }) {
-  
-  // Karena ini Server Component, kita bisa mensimulasikan data fetching
-  // const project = await fetchProjectData(params.slug); 
-  
+/**
+ * Fungsi ini diekspor untuk memberitahu Next.js rute dinamis mana
+ * yang harus dibuat secara statis saat proses build.
+ */
+export async function generateStaticParams() {
+  return projectList.map((project) => ({
+    slug: project.id.toString(),
+  }));
+}
+
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
   const { slug } = params;
 
-  // Lakukan pencarian data (data lookup)
-  // Catatan: Pastikan ProjectContent tidak menggunakan hooks (useState/useEffect)
-  // jika Anda ingin ProjectDetailPage tetap murni Server Component
+  // Cari data proyek berdasarkan slug dari params.
   const project = projectList.find((p) => p.id.toString() === slug);
   
-  // Jika 'project' tidak ditemukan, tampilkan 404
   if (!project) {
     notFound();
   }
@@ -32,5 +35,3 @@ export default async function ProjectDetailPage({ params }: { params: ProjectPar
     </main>
   );
 }
-
-// Catatan: Interface ProjectDetailPageProps tidak diperlukan lagi
