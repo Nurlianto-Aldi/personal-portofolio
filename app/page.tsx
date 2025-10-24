@@ -4,7 +4,6 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div>
       <main
         className="flex flex-col items-center justify-center min-h-[calc(100vh-90px)] p-24 max-lg:p-16 max-sm:p-6"
       >
@@ -18,7 +17,7 @@ export default function Home() {
               <Image 
                 src="/IMG_1154 - crop (1).png"
                 alt="nurlianto-aldi"
-                layout="fill"
+                fill
                 style={{objectFit: "cover"}}
               />
             </div>
@@ -41,6 +40,5 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </div>
   );
 }
