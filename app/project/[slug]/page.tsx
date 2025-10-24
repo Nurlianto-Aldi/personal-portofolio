@@ -10,9 +10,9 @@ type ProjectDetailPageProps = {
 };
 
 const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
-  const { slug } = await params;
+  const { slug } = params;
 
-  const allProjects = await projectList;
+  const allProjects = projectList;
 
   const project = allProjects.find((p) => p.id.toString() === slug);
 
