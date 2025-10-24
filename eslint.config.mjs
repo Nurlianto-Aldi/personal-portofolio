@@ -7,7 +7,7 @@ const eslintConfig = defineConfig([
   nextVitals,
   { ...nextTs, plugins: { "@typescript-eslint": tsPlugin } },
   // Override default ignores of eslint-config-next.
-  ...globalIgnores(
+  globalIgnores(
     // Default ignores of eslint-config-next:
     ".next/**",
     "out/**",
