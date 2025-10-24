@@ -12,9 +12,7 @@ type ProjectDetailPageProps = {
 const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
   const { slug } = params;
 
-  const allProjects = projectList;
-
-  const project = allProjects.find((p) => p.id.toString() === slug);
+  const project = projectList.find((p) => p.id.toString() === slug);
 
   if (!project) {
     notFound();
